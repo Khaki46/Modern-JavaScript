@@ -41,7 +41,7 @@
         user = new User("Mike");
         console.log(user.name);
 
-        // 任务
+        // Task1
         class Clock {
             constructor({template}) {
                 this.template = template;
@@ -115,6 +115,38 @@
         rabbit.hide();
         rabbit.stop();
         console.log(`Name is ${rabbit.name} earLength is ${rabbit.earLength}`);
+
+        // Task2
+        class TaskAnimal {
+            constructor(name){
+                this.name = name;
+            }
+        }
+        class TaskRabbit extends TaskAnimal {
+            constructor(name) {
+                super(name);
+                this.created = Date.now();
+            }
+        }
+        let taskRabbit = new TaskRabbit("White Rabbit");
+        console.log(taskRabbit.name);
+
+        // 创建一个继承自 Clock 的新的类 ExtendedClock，并添加参数 precision — 每次 “ticks” 之间间隔的毫秒数，默认是 1000（1 秒）。
+        class ExtendedClock extends Clock {
+            constructor(options) {
+                super(options);
+                let { precision = 1000 } = options;
+                this.precision = precision;
+            }
+
+            start() {
+                this.render();
+                this.timer = setInterval(() => {
+                    this.render();
+                }, this.precision);
+            }
+        }
+
     </script>
 </body>
 </html>
