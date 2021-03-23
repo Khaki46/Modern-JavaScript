@@ -75,7 +75,46 @@
         }
 
         let clock = new Clock({template: 'h:m:s'});
-        clock.start();
+        // clock.start();
+        
+        // extends关键字
+        class Animal{
+            constructor(name){
+                this.speed = 0;
+                this.name = name;
+            }
+            run(speed){
+                this.speed = speed;
+            }
+            stop(){
+                this.speed = 0;
+                console.log(`${this.name}is stop.`);
+            }
+        }
+        let animal = new Animal("My animal");
+        animal.run(0);
+        console.log(`It name is ${animal.name} and speed is ${animal.speed}`);
+
+        class Rabbit extends Animal{
+            constructor(name, earLength){
+                // super(...arg);
+                super(name);
+                this.earLength = earLength;
+            };
+            hide() {
+                console.log(`${this.name} hides!`);
+            }
+            stop(){
+                super.stop();//调用了父类的stop()方法
+                this.hide();
+            }
+        }
+        let rabbit = new Rabbit("White Rabbit",10);
+        rabbit.run(5);
+        console.log(`Rabbit speed is ${rabbit.speed}`);
+        rabbit.hide();
+        rabbit.stop();
+        console.log(`Name is ${rabbit.name} earLength is ${rabbit.earLength}`);
     </script>
 </body>
 </html>
