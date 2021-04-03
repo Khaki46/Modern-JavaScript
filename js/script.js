@@ -66,7 +66,7 @@ let animal = {
 let rabbit = {
     jumps: true
 };
-rabbit.__proto__ = animal;
+rabbit.__proto__ = animal;//放弃使用
 console.log(rabbit.eats);//true
 
 function Rabbit(name) {
@@ -76,19 +76,34 @@ Rabbit.prototype = animal;//当创建一个new Rabbit 时把它的[[Prototype]] 
 let rabbit2 = new Rabbit("Rabbit 2");//rabbit2.__proto__ = animal;
 console.log(rabbit2.eats);
 
-Function.prototype.defer = function(ms) {
-    let f = this;
-    console.log(f);
-    return function(...args) {
-      setTimeout(() => f.apply(this, args), ms);
+// Function.prototype.defer = function(ms) {
+//     let f = this;
+//     console.log(f);
+//     return function(...args) {
+//       setTimeout(() => f.apply(this, args), ms);
+//     }
+//   };
+  
+//   // check it
+//   function f(a, b) {
+//     alert( a + b );
+//   }
+  
+//   f.defer(1000)(1, 2); // 1 秒后显示 3
+  
+// Object.create()方法创建一个新对象，使用现有的对象来提供新创建的对象的__proto__。
+let theAnimal = {
+    name:"",
+    eats: true,
+    food: [],
+    fun: function () {
+        console.log(`${this.name}+${this.eats}+${this.food}`);
     }
-  };
-  
-  // check it
-  function f(a, b) {
-    alert( a + b );
-  }
-  
-  f.defer(1000)(1, 2); // 1 秒后显示 3
-  
-  
+}
+let theRabbit = Object.create(theAnimal);//继承theAnimal
+theRabbit.name = "rabbit";
+theRabbit.eats = true;
+theRabbit.food.push("test");
+theRabbit.food.push("test2");
+theRabbit.fun();
+console.log(Object.getPrototypeOf(theRabbit))
