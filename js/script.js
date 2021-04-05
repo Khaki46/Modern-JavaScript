@@ -102,8 +102,11 @@ let theAnimal = {
 }
 let theRabbit = Object.create(theAnimal);//继承theAnimal
 theRabbit.name = "rabbit";
-theRabbit.eats = true;
 theRabbit.food.push("test");
 theRabbit.food.push("test2");
 theRabbit.fun();
 console.log(Object.getPrototypeOf(theRabbit))
+
+Object.setPrototypeOf(theRabbit, {});//原型改为{}
+console.log(theRabbit);
+
