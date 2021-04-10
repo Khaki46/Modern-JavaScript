@@ -11,11 +11,6 @@ setTimeout(() => {
 
 // console.log(document.body.innerHTML);
 
-// task
-let li = document.querySelectorAll('ul > li');
-for (let index = 0; index < li.length; index++) {
-    console.log(li[index].firstChild.textContent);
-}
 
 // for (const iterator of li) {
 //     console.log(iterator.firstChild.data);
