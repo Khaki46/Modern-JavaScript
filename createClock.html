@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>createClock</title>
+</head>
+<style>
+    .hour{
+        color: aqua;
+    }
+    .min{
+        color: rgb(185, 24, 100);
+    }
+    .sec{
+        color: rgb(123, 230, 109);
+    }
+</style>
+<body>
+    <div id="clock">
+        <span class="hour">hh</span>:<span class="min">mm</span>:<span class="sec">ss</span>
+    </div>
+    <div id="btnBox">
+        <button>start</button>
+        <button>stop</button>
+    </div>
+    <script>
+        // 1
+        let spanHours = document.querySelectorAll('span')[0];
+        let spanMin = document.querySelectorAll('span')[1];
+        let spanSec = document.querySelectorAll('span')[2];
+        //2
+        let clock = document.querySelector('div');
+        let btnBox = document.getElementById('btnBox');
+        let btnStart = btnBox.children[0];
+        let btnStop = btnBox.children[1];
+        
+        let timer;
+        function start() {
+            let date = new Date();
+            // spanHours.innerHTML = date.getHours();
+            // spanMin.innerHTML = date.getMinutes();
+            // spanSec.innerHTML = date.getSeconds();
+            clock.children[0].innerHTML = date.getHours();
+            clock.children[1].innerHTML = date.getMinutes();
+            clock.children[2].innerHTML = date.getSeconds();
+
+        }
+        function clockStart() {
+            timer = setInterval(() => {
+                start();
+            }, 1000);
+        }
+        btnStart.addEventListener("click",clockStart);
+        
+        btnStop.onclick = () =>{
+            clearInterval(timer);
+        }
+        clockStart();
+    </script>
+</body>
+</html>
