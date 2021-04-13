@@ -61,10 +61,26 @@ showNotification({
     html: "Hello! AD", // 通知中的 
     className: 'ad'
 });
-  let example = document.getElementById('example');
-    console.log(example.offsetTop);
+let example = document.getElementById('example');
+console.log(example.offsetTop);
 console.log(example.offsetHeight);
 console.log(example.clientLeft);
+
 setInterval(() => {
     console.log(example.scrollHeight  - example.scrollTop - example.clientHeight);
 }, 1000);
+// 禁止滚动
+// document.body.style.overflow = 'hidden'
+// example.style.overflow = 'hidden';
+let scrollBox = document.getElementById('scrollBox');
+let banScroll = scrollBox.querySelectorAll('input')[0];
+let recoveryScroll = scrollBox.querySelectorAll('input')[1];
+banScroll.onclick = () => {
+    document.body.style.overflow = 'hidden';
+    example.style.overflow = 'hidden';
+}
+recoveryScroll.onclick = () => {
+    document.body.style.overflow = '';
+    example.style.overflow = '';
+}
+    
