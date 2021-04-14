@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hide</title>
+</head>
+<body>
+    <input type="button" id="hider" value="Click to hide the text" />
+    <input type="button" id="visible" value="Click to visible the text" />
+    <input type="button" id="" value="Hide myself" onclick="this.hidden=true">
+    <div id="text">Text</div>
+  
+    <script>
+        let btnHider = document.getElementById('hider');
+        let btnVisible = document.getElementById('visible');
+        let div = document.getElementById('text');
+        btnHider.onclick = ()=>{
+            div.hidden = 'true';
+        }
+        btnVisible.onclick = ()=>{
+            div.hidden = '';
+        }
+
+    </script>
+  
+</body>
+</html>

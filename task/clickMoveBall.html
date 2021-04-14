@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clickMoveBall</title>
+    <style>
+    #field {
+      width: 200px;
+      height: 150px;
+      border: 10px solid black;
+      background-color: #00FF00;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    #ball {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 40px;
+      height: 40px;
+      transition: all 1s;
+    }
+      </style>    
+</head>
+<body style="height:2000px">
+
+    Click on a field to move the ball there.
+    <br> The ball should never leave the field.
+  
+  
+    <div id="field">
+        <img src="https://en.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    </div>
+    
+        <script>
+        let ball = document.getElementById('ball');
+        let field = document.getElementById('field');
+        let fieldCoords = field.getBoundingClientRect();
+
+        field.onclick = function(point){
+
+            console.log(ball);
+            console.log(fieldCoords.top);
+            let left = point.clientX-fieldCoords.left-field.clientLeft-ball.clientWidth/2;
+            let top = point.clientY-fieldCoords.top-field.clientTop-ball.clientHeight/2;
+
+            if(left<0) left = 0;
+            if(top<0) top = 0;
+
+            if(left+ball.clientWidth>field.clientWidth) left=field.clientWidth-ball.clientWidth;
+            if(top+ball.clientHeight>field.clientHeight) top=field.clientHeight-ball.clientHeight;
+            ball.style.left = left +'px';
+            ball.style.top = top +'px';
+
+        }
+
+    </script>
+  </body>
+  </html>
