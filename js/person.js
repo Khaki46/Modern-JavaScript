@@ -39,3 +39,46 @@ function selectForm(min, max) {
   let choices = max - min + 1;
   return Math.floor(Math.random() * choices + min);
 }
+
+const arr = ["mike", "bar", "tim"];
+console.log(Array.from(arr.keys()));
+console.log(Array.from(arr.values()));
+console.log(Array.from(arr.entries()));
+console.log(arr.join(" "));
+console.log(arr.reverse());
+const numArr = [2, 6, 9, 0, 23, 11];
+console.log(numArr.sort(compare));
+console.log(numArr.sort((a,b)=>{return b-a}));
+function compare(num1, num2) {
+  return num1 - num2;
+}
+console.log(numArr.every((item) => item >= 0));
+console.log(numArr.some((item) => item > 10));
+console.log(numArr.reduce((num1, num2) => num1 + num2));
+
+const arrLetter = ["Z", "Z", "J", "6", "q", "Z", "v"]
+let str = "gsadgadd"
+Array.prototype.getMost = function(){
+  let obj = this.reduce((p, n) => ((p[n]++ || (p[n] = 1)), (p.max = p.max >= p[n] ? p.max : p[n]), (p.key = p.max > p[n] ? p.key : n), p), {});
+  return 'key: '+ obj.key+ ' len: '+obj.max;
+}
+console.log(arrLetter.getMost());
+
+let objStr = {}
+for (const iterator of arrLetter) {
+  if (objStr[iterator]) {
+    objStr[iterator]++
+  } else {
+    objStr[iterator] = 1;
+  }
+}
+console.log(objStr);
+let max = 0;
+let letter = "";
+for (const key in objStr) {
+  if (max < objStr[key]) {
+    max = objStr[key];
+    letter = key;
+  }
+}
+console.log(`出现最多字母:${letter}出现次数:${max}`);
